@@ -18,13 +18,12 @@ fokusera på att bygga applikationer i .NET, men när webb
 började locka mer och mer bestämde jag mig för att söka till BTH.
 
 Jag brinner fortfarande för .NET och C# och längtar tillbaks
-varje gång jag skriver dynamiskt typad kod. Jag håller därför
-självklart på med en hel del C# på fritiden och lär mig design
-mönster och mer avancerad oop. Då både .NET och webb intresserar
-mig funderar jag på att ge mig på ASP.NET någon gång. Det har
-inte blivit av än men snart kanske... Vem vet, Blazor kanske
-släpps innan dess, och då vet jag precis vad jag kommer hålla
-på med!
+nästan varje gång jag skriver något annat. Det var ett tag sedan
+jag höll på med C# och design mönster.
+Då både .NET och webb intresserar mig funderar jag på att ge
+mig på ASP.NET någon gång. Det har inte blivit av än men snart
+kanske... Vem vet, Blazor kanske släpps innan dess, och då vet
+jag precis vad jag kommer hålla på med!
 
 För att förbereda mig inför hösten läste jag två Komvux-kurser
 på distans, Webbserverprogrammering 1 och 2 och intresset för
