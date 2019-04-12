@@ -1,3 +1,5 @@
-#### Footer col 3
+#### Länkar
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+* [BTH](https://www.bth.se/)
+* [dbwebb](https://dbwebb.se/)
+* [PHP](https://www.php.net/)

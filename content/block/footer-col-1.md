@@ -1,3 +1,4 @@
-#### Footer col 1
+#### Kurs och kursrepo
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+Kursen heter Objektorienterade webbteknologier.
+Kursmaterial hittar du på [dbwebb.se](https://dbwebb.se/kurser/oophp-v5) och [GitHub](https://github.com/dbwebb-se/oophp).

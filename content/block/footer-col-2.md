@@ -1,3 +1,3 @@
-#### Footer col 2
+#### Redovisa på GitHub
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+På [GitHub](https://github.com/EvilBengt/bthoophp) kan du även hitta repot för denna sidan om du vill det.
