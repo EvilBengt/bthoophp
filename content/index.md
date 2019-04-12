@@ -1,27 +1,33 @@
 ---
-title: "Min fina titel"
+title: "Hem"
 ---
 Min me-sida i kursen oophp
 =========================
 
 Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/index.md`.
 
-[FIGURE src="image/me.jpg?w=400&a=4,27,11,0&cf&sharpen" class="right" caption="Bild på mig, ätandes glass och hållandes ett kort på någon jultillställning."]
+[FIGURE src="image/me.jpg?w=400" class="right" caption="Bild på mig, ätandes glass och hållandes ett kort på någon jultillställning."]
 
-Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.
+Anton Johnsson Håkansson. Bor och arbetar hemma på gården
+i Adelöv när jag inte sitter vid datorn. Läste Teknik på
+Holavedsgymnasiet och läste sedan en termin Systemutvecklare
+.NET på yrkeshögskola. Jag hittade sedan Webbprogrammering på
+BTH och kände att den verkade mycket intressant. Tidigare har
+jag aldrig tänkt att webb kan vara roligt utan har mer velat
+fokusera på att bygga applikationer i .NET, men när webb
+började locka mer och mer bestämde jag mig för att söka till BTH.
 
-Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.
+Jag brinner fortfarande för .NET och C# och längtar tillbaks
+varje gång jag skriver dynamiskt typad kod. Jag håller därför
+självklart på med en hel del C# på fritiden och lär mig design
+mönster och mer avancerad oop. Då både .NET och webb intresserar
+mig funderar jag på att ge mig på ASP.NET någon gång. Det har
+inte blivit av än men snart kanske... Vem vet, Blazor kanske
+släpps innan dess, och då vet jag precis vad jag kommer hålla
+på med!
 
-Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. Jag gillade landhockey och har spelat bandy och hockey samt gått bowlinggymnasiet i Nässjö. Jag har varit städare, diskare, kallskänka, servitör och kock. På ett bananskal landade jag i Ronneby när jag började högskolan 1990 där och nu är jag kvar med fru, barn och så vidare.
-
-Programmering har alltid intresserat mig sedan 13-årsåldern och min första dator var en Spectravideo 328 med bandspelare.
-
-Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker och blir över.
-
-Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching, sedan turfing och nu på sistone verkar släktforskning lite spännande. Annars kan jag alltid koda på något av mina opensource-projekt, det finns och blir över.
-
-Vill du läsa mer om vad jag jobbat med så kan du kika på min [Linkedin-profil](https://www.linkedin.com/in/pt90mr/).
-
-Vi syns och hörs i forum och chatt!
-
-/Mikael
+För att förbereda mig inför hösten läste jag två Komvux-kurser
+på distans, Webbserverprogrammering 1 och 2 och intresset för
+webb växte. Fram till starten här på BTH spenderade jag en hel
+del tid med HTML, CSS och PHP. Just nu håller jag på med en
+databasdriven webbsida i PHP (dock inte oop) för lantbruket.
