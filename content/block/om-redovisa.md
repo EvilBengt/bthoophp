@@ -1,3 +1,3 @@
 #### Redovisa på GitHub
 
-Skriv något kort om ditt redovisa-repo och länka till [repot för me/redovisa på GitHub](XXX).
+På [GitHub](https://github.com/EvilBengt/bthoophp) kan du även hitta repot för denna sidan om du vill det.
