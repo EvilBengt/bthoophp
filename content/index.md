@@ -6,7 +6,7 @@ Min me-sida i kursen oophp
 
 Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/index.md`.
 
-[FIGURE src="image/me.jpg?w=400" class="right" caption="Bild på mig, ätandes glass och hållandes ett kort på någon jultillställning."]
+[FIGURE src="image/me.jpg?w=400" class="right" caption="Allmänt lustig bild på mig framför Brahälla, Adelöv."]
 
 Anton Johnsson Håkansson. Bor och arbetar hemma på gården
 i Adelöv när jag inte sitter vid datorn. Läste Teknik på
