@@ -4,41 +4,72 @@
  */
 //var_dump(array_keys(get_defined_vars()));
 
-
-
 /**
- * Init the game and redirect to play the game.
+ * Init the game
  */
-$app->router->get("guess/init", function () use ($app) {
-    $_SESSION["guess"] = new EVB\Guess\Guess();
-    $_SESSION["result"] = "";
-    $_SESSION["cheat"] = "";
-    return $app->response->redirect("guess/play");
+$app->router->get("onehundred/init", function () use ($app) {
+    $_SESSION["onehundred"] = new EVB\OneHundred\Game(
+        new EVB\OneHundred\NormalPlayer(
+            new EVB\OneHundred\NormalDiceHand(
+                2,
+                new EVB\OneHundred\NormalDiceFactory()
+            )
+        ),
+        new EVB\OneHundred\NormalPlayer(
+            new EVB\OneHundred\NormalDiceHand(
+                2,
+                new EVB\OneHundred\NormalDiceFactory()
+            )
+        ),
+        5
+    );
+
+    $app->page->add("oneHundred/init");
+
+    return $app->page->render([
+        "title" => "Starta spelet"
+    ]);
 });
 
 
 
 /**
- * Play the game - show game status
+ * Player's turn
  */
-$app->router->get("guess/play", function () use ($app) {
-    $game = $_SESSION["guess"] ?? null;
-    if (!$game) {
-        return $app->response->redirect("guess/init");
+$app->router->get("onehundred/roll", function () use ($app) {
+    $game = $_SESSION["onehundred"];
+
+    if ($game->getWinner()) {
+        return $app->response->redirect("onehundred/game-over");
     }
 
+    $game->rollPlayer();
+
+    if ($game->playerRolledOnes()) {
+        return $app->response->redirect("onehundred/roll-results-stop");
+    } else {
+        return $app->response->redirect("onehundred/roll-results");
+    }
+});
+
+
+
+/**
+ * Player's turn - show results - ok
+ */
+$app->router->get("onehundred/roll-results", function () use ($app) {
     $title = "Play the game";
 
-    $result = "";
+    $game = $_SESSION["onehundred"];
 
-    $data = [
-        "result" => $_SESSION["result"] ?? "",
-        "triesLeft" => $game->getTries(),
-        "cheat" => $_SESSION["cheat"] ?? ""
+    $scores = [
+        "playerScore" => $game->getPlayerTotalScore(),
+        "computerScore" => $game->getComputerTotalScore()
     ];
 
-    $app->page->add("guess/play", $data);
-    // $app->page->add("guess/debug");
+    $app->page->add("onehundred/scores", $scores);
+    $app->page->add("onehundred/roll", ["roll" => $game->getLastRoll()]);
+    $app->page->add("onehundred/rollOk", ["sum" => $game->getPlayerTempScore()]);
 
     return $app->page->render([
         "title" => $title,
@@ -48,25 +79,98 @@ $app->router->get("guess/play", function () use ($app) {
 
 
 /**
- * Play the game - POST
+ * Player's turn - show results - stop
  */
-$app->router->post("guess/play", function () use ($app) {
-    $game = $_SESSION["guess"] ?? null;
-    if (!$game || isset($_POST["restart"])) {
-        return $app->response->redirect("guess/init");
+$app->router->get("onehundred/roll-results-stop", function () use ($app) {
+    $title = "Play the game";
+
+    $game = $_SESSION["onehundred"];
+
+    $scores = [
+        "playerScore" => $game->getPlayerTotalScore(),
+        "computerScore" => $game->getComputerTotalScore()
+    ];
+
+    $app->page->add("onehundred/scores", $scores);
+    $app->page->add("onehundred/roll", ["roll" => $game->getLastRoll()]);
+    $app->page->add("onehundred/rollOver");
+
+    return $app->page->render([
+        "title" => $title,
+    ]);
+});
+
+
+/**
+ * Player's turn - save
+ */
+$app->router->get("onehundred/save", function () use ($app) {
+    $game = $_SESSION["onehundred"];
+
+    $game->savePlayer();
+
+    if ($game->getWinner()) {
+        return $app->response->redirect("onehundred/game-over");
     }
 
-    $result = "";
+    $app->response->redirect("onehundred/computer");
+});
 
-    if (isset($_POST["guess"]) && isset($_POST["value"])) {
-        try {
-            $_SESSION["result"] = $game->makeGuess($_POST["value"]);
-        } catch (EVB\Guess\GuessException $e) {
-            $_SESSION["result"] = "Något gick fel: " . $e->getMessage();
-        }
-    } else if (isset($_POST["cheat"])) {
-        $_SESSION["cheat"] = $game->getNumber();
-    }
 
-    return $app->response->redirect("guess/play");
+
+/**
+ * Computer's turn
+ */
+$app->router->get("onehundred/computer", function () use ($app) {
+    $game = $_SESSION["onehundred"];
+
+    $game->playComputer();
+
+    $app->response->redirect("onehundred/computer-results");
+});
+
+
+
+/**
+ * Computer's turn - show results
+ */
+$app->router->get("onehundred/computer-results", function () use ($app) {
+    $title = "Play the game";
+
+    $game = $_SESSION["onehundred"];
+
+    $scores = [
+        "playerScore" => $game->getPlayerTotalScore(),
+        "computerScore" => $game->getComputerTotalScore()
+    ];
+
+    $app->page->add("onehundred/scores", $scores);
+    $app->page->add("onehundred/computerResults", ["results" => $game->getComputerResults()]);
+
+    return $app->page->render([
+        "title" => $title
+    ]);
+});
+
+
+
+/**
+ * Game over - show winner
+ */
+$app->router->get("onehundred/game-over", function () use ($app) {
+    $title = "Play the game";
+
+    $game = $_SESSION["onehundred"];
+
+    $scores = [
+        "playerScore" => $game->getPlayerTotalScore(),
+        "computerScore" => $game->getComputerTotalScore()
+    ];
+
+    $app->page->add("onehundred/scores", $scores);
+    $app->page->add("onehundred/gameOver", ["winner" => $game->getWinner()]);
+
+    return $app->page->render([
+        "title" => $title
+    ]);
 });
