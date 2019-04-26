@@ -65,7 +65,7 @@ return [
         ],
         [
             "text" => "100 game",
-            "url" => "onehundred-game/init",
+            "url" => "onehundred/init",
             "title" => "Spela tärningsspelet 100",
         ]
     ],
