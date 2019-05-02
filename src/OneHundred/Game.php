@@ -13,11 +13,6 @@ class Game
     private $histogram;
 
     /**
-     * @var int Max times the computer rolls before saving.
-     */
-    private $computerRisk;
-
-    /**
      * @var Player The player.
      */
     private $player;
@@ -41,7 +36,7 @@ class Game
      * Initiates a new game and sets a random number.
      * @param int $maxTries Maximum number of tries.
      */
-    public function __construct(IDice $diceForHistogram, IPlayer $player, IPlayer $computer, int $computerRisk)
+    public function __construct(IDice $diceForHistogram, IPlayer $player, IPlayer $computer)
     {
         $this->computerRisk = $computerRisk;
         $this->player = $player;
@@ -90,15 +85,26 @@ class Game
 
     public function playComputer()
     {
-        $times = \random_int(1, $this->computerRisk);
         $results = "";
 
-        for ($i = 0; $i < $times; $i++) {
+        $sum = 0;
+
+        for ($i = 0; $i < 5; $i++) {
             $this->computer->roll();
             $results .= "(" . \implode(", ", $this->computer->getLastRoll()) . ") ";
+
             if ($this->computer->rolledOnes()) {
                 $this->computerResults = $results;
                 return;
+            }
+
+            $roll = array_sum($this->computer->getLastRoll());
+            $sum += $roll;
+
+            if ($this->computer->getTotalScore() - $this->player->getTotalScore() > 10) {
+                if ($sum > 10) {
+                    return;
+                }
             }
         }
         $this->computerResults = $results;
