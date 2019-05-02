@@ -38,7 +38,6 @@ class Game
      */
     public function __construct(IDice $diceForHistogram, IPlayer $player, IPlayer $computer)
     {
-        $this->computerRisk = $computerRisk;
         $this->player = $player;
         $this->computer = $computer;
         $this->histogram = new Histogram($diceForHistogram);
@@ -103,7 +102,7 @@ class Game
 
             if ($this->computer->getTotalScore() - $this->player->getTotalScore() > 10) {
                 if ($sum > 10) {
-                    return;
+                    break;
                 }
             }
         }

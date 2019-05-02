@@ -62,8 +62,7 @@ class OneHundredController implements AppInjectableInterface
                     new NormalDiceHand(
                         [$theDice, $theDice]
                     )
-                ),
-                5
+                )
             )
         );
 
