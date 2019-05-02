@@ -72,6 +72,11 @@ return [
             "text" => "100 game",
             "url" => "onehundred/init",
             "title" => "Spela tärningsspelet 100",
+        ],
+        [
+            "text" => "100 game - controller",
+            "url" => "onehundred-controller/init",
+            "title" => "Spela tärningsspelet 100",
         ]
     ],
 ];
