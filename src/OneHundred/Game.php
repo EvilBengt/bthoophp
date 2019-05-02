@@ -41,7 +41,6 @@ class Game
         $this->player = $player;
         $this->computer = $computer;
         $this->histogram = new Histogram($diceForHistogram);
-        $this->histogramDice = $diceForHistogram;
     }
 
     public function getLastRoll()

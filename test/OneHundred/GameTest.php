@@ -20,9 +20,9 @@ class GameTest extends TestCase
     public function setUp()
     {
         $this->game = new Game(
+            new HistogramDice(),
             new SimplePlayer(),
-            new SimplePlayer(),
-            1
+            new SimplePlayer()
         );
     }
 
@@ -94,7 +94,7 @@ class GameTest extends TestCase
 
         $result = $this->game->getComputerTotalScore();
 
-        $this->assertEquals(101, $result);
+        $this->assertEquals(505, $result);
     }
 
     /**
@@ -104,9 +104,9 @@ class GameTest extends TestCase
     public function testPlayComputer()
     {
         $game = new Game(
+            new HistogramDice(),
             new UnfortunatePlayer(),
-            new UnfortunatePlayer(),
-            1
+            new UnfortunatePlayer()
         );
 
         $game->playComputer();
@@ -122,9 +122,9 @@ class GameTest extends TestCase
     public function testGetWinnerDu()
     {
         $game = new Game(
+            new HistogramDice(),
             new SimplePlayer(),
-            new UnfortunatePlayer(),
-            1
+            new UnfortunatePlayer()
         );
 
         $game->rollPlayer();

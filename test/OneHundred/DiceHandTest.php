@@ -4,8 +4,6 @@ namespace EVB\OneHundred;
 
 use PHPUnit\Framework\TestCase;
 
-require_once "Mocking/OneSidedDiceFactory.php";
-require_once "Mocking/AnswerToLifeDiceFactory.php";
 require_once "Mocking/AnswerToLifeDice.php";
 
 /**
@@ -18,7 +16,7 @@ class DiceHandTests extends TestCase
      */
     public function testConstructor()
     {
-        $diceHand = new NormalDiceHand(1, new NormalDiceFactory());
+        $diceHand = new NormalDiceHand([new Dice()]);
 
         $this->assertInstanceOf(NormalDiceHand::class, $diceHand);
     }
@@ -30,7 +28,7 @@ class DiceHandTests extends TestCase
      */
     public function testRollAndValues()
     {
-        $diceHand = new NormalDiceHand(2, new NormalDiceFactory);
+        $diceHand = new NormalDiceHand([new Dice(), new Dice()]);
 
         $diceHand->roll();
 
@@ -45,7 +43,7 @@ class DiceHandTests extends TestCase
      */
     public function testHasOnesTrue()
     {
-        $diceHand = new NormalDiceHand(1, new OneSidedDiceFactory());
+        $diceHand = new NormalDiceHand([new Dice(1)]);
 
         $diceHand->roll();
 
@@ -60,7 +58,7 @@ class DiceHandTests extends TestCase
      */
     public function testHasOnesFalse()
     {
-        $diceHand = new NormalDiceHand(1, new AnswerToLifeDiceFactory());
+        $diceHand = new NormalDiceHand([new AnswerToLifeDice()]);
 
         $diceHand->roll();
 
@@ -74,7 +72,7 @@ class DiceHandTests extends TestCase
      */
     public function testSum()
     {
-        $diceHand = new NormalDiceHand(1, new AnswerToLifeDiceFactory());
+        $diceHand = new NormalDiceHand([new AnswerToLifeDice()]);
 
         $diceHand->roll();
 
