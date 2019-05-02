@@ -6,11 +6,17 @@ namespace EVB\OneHundred;
  * A dice which has the ability to present data to be used for creating
  * a histogram.
  */
-class HistogramDice implements IDice, HistogramInterface
+class HistogramDice extends Dice implements HistogramInterface
 {
-    use HistogramTrait2;
+    use HistogramTrait;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get max value for the histogram.
@@ -32,7 +38,8 @@ class HistogramDice implements IDice, HistogramInterface
      */
     public function roll()
     {
-        $this->serie[] = parent::roll();
-        return $this->getLastRoll();
+        $roll = parent::roll();
+        $this->serie[] = $roll;
+        return $roll;
     }
 }

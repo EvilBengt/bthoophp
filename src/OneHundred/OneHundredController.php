@@ -48,19 +48,20 @@ class OneHundredController implements AppInjectableInterface
      */
     public function initAction() : object
     {
+        $theDice = new HistogramDice();
+
         $this->app->session->set(
             "onehundred",
             new Game(
+                $theDice,
                 new NormalPlayer(
                     new NormalDiceHand(
-                        2,
-                        new NormalDiceFactory()
+                        [$theDice, $theDice]
                     )
                 ),
                 new NormalPlayer(
                     new NormalDiceHand(
-                        2,
-                        new NormalDiceFactory()
+                        [$theDice, $theDice]
                     )
                 ),
                 5
@@ -122,7 +123,12 @@ class OneHundredController implements AppInjectableInterface
             "computerScore" => $game->getComputerTotalScore()
         ];
 
+        $histogram = [
+            "histogram" => $game->getHistogram()
+        ];
+
         $this->app->page->add("oneHundredController/scores", $scores);
+        $this->app->page->add("oneHundredController/histogram", $histogram);
         $this->app->page->add("oneHundredController/roll", ["roll" => $game->getLastRoll()]);
         $this->app->page->add("oneHundredController/rollOk", ["sum" => $game->getPlayerTempScore()]);
 
@@ -152,7 +158,12 @@ class OneHundredController implements AppInjectableInterface
             "computerScore" => $game->getComputerTotalScore()
         ];
 
+        $histogram = [
+            "histogram" => $game->getHistogram()
+        ];
+
         $this->app->page->add("oneHundredController/scores", $scores);
+        $this->app->page->add("oneHundredController/histogram", $histogram);
         $this->app->page->add("oneHundredController/roll", ["roll" => $game->getLastRoll()]);
         $this->app->page->add("oneHundredController/rollOver");
 
@@ -225,7 +236,12 @@ class OneHundredController implements AppInjectableInterface
             "computerScore" => $game->getComputerTotalScore()
         ];
 
+        $histogram = [
+            "histogram" => $game->getHistogram()
+        ];
+
         $this->app->page->add("oneHundredController/scores", $scores);
+        $this->app->page->add("oneHundredController/histogram", $histogram);
         $this->app->page->add("oneHundredController/computerResults", ["results" => $game->getComputerResults()]);
 
         return $this->app->page->render([
@@ -254,7 +270,12 @@ class OneHundredController implements AppInjectableInterface
             "computerScore" => $game->getComputerTotalScore()
         ];
 
+        $histogram = [
+            "histogram" => $game->getHistogram()
+        ];
+
         $this->app->page->add("oneHundredController/scores", $scores);
+        $this->app->page->add("oneHundredController/histogram", $histogram);
         $this->app->page->add("oneHundredController/gameOver", ["winner" => $game->getWinner()]);
 
         return $this->app->page->render([

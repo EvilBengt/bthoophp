@@ -7,7 +7,7 @@ namespace EVB\OneHundred;
  */
 class Dice implements IDice
 {
-    private $sides;
+    protected $sides;
 
     public function __construct(int $sides = 6)
     {

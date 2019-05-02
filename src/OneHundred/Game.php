@@ -8,6 +8,11 @@ namespace EVB\OneHundred;
 class Game
 {
     /**
+     * @var Histogram Histogram for dice rolls.
+     */
+    private $histogram;
+
+    /**
      * @var int Max times the computer rolls before saving.
      */
     private $computerRisk;
@@ -36,11 +41,13 @@ class Game
      * Initiates a new game and sets a random number.
      * @param int $maxTries Maximum number of tries.
      */
-    public function __construct(IPlayer $player, IPlayer $computer, int $computerRisk)
+    public function __construct(IDice $diceForHistogram, IPlayer $player, IPlayer $computer, int $computerRisk)
     {
         $this->computerRisk = $computerRisk;
         $this->player = $player;
         $this->computer = $computer;
+        $this->histogram = new Histogram($diceForHistogram);
+        $this->histogramDice = $diceForHistogram;
     }
 
     public function getLastRoll()
@@ -109,5 +116,11 @@ class Game
     public function getWinner()
     {
         return $this->winner;
+    }
+
+    public function getHistogram()
+    {
+        $this->histogram->update();
+        return $this->histogram->getAsText();
     }
 }

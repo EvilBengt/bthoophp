@@ -20,16 +20,14 @@ class NormalDiceHand implements IDiceHand
     /**
      * Constructor to initiate the dicehand with a number of dices.
      *
-     * @param int $dices Number of dices to create, defaults to five.
+     * @param array<IDice> $dices The dices to use.
      */
-    public function __construct(int $dices, IDiceFactory $diceFactory)
+    public function __construct(array $dices)
     {
         $this->dices  = [];
         $this->values = [];
 
-        for ($i = 0; $i < $dices; $i++) {
-            $this->dices[]  = $diceFactory->create();
-        }
+        $this->dices = $dices;
     }
 
     /**
