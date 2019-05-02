@@ -32,8 +32,7 @@ class OneHundredController implements AppInjectableInterface
      */
     public function indexAction() : string
     {
-        // Deal with the action and return a response.
-        return "INDEX!!";
+        return $this->app->response->redirect("onehundred-controller/init");
     }
 
 
