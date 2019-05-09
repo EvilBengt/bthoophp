@@ -1,7 +1,11 @@
 <?php
+
+namespace Anax\View;
+
 if (!$resultset) {
     return;
 }
+
 ?>
 
 <table>
@@ -17,9 +21,12 @@ if (!$resultset) {
     <tr>
         <td><?= $id ?></td>
         <td><?= $row->id ?></td>
-        <td><img class="thumb" src="<?= $row->image ?>"></td>
+        <td><img class="thumb" src="../<?= $row->image ?>"></td>
         <td><?= $row->title ?></td>
         <td><?= $row->year ?></td>
+        <td>
+            <a href="edit?id=<?= $row->id ?>">Redigera</a>
+        </td>
     </tr>
 <?php endforeach; ?>
 </table>
