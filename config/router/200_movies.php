@@ -7,7 +7,7 @@ return [
         [
             "info" => "MoviesController.",
             "mount" => "movies",
-            "handler" => "\EVB\OneHundred\MoviesController",
+            "handler" => "\EVB\Movies\MoviesController",
         ]
     ]
 ];
