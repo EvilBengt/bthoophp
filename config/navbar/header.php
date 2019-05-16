@@ -93,5 +93,10 @@ return [
             "url" => "movies",
             "title" => "Filmdatabasen",
         ],
+        [
+            "text" => "MyTextFilter",
+            "url" => "test-my-text-filter",
+            "title" => "MyTextFilter",
+        ],
     ],
 ];
