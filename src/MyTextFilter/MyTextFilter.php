@@ -1,6 +1,6 @@
 <?php
 
-namespace EVB\TextFilter;
+namespace EVB\MyTextFilter;
 
 use Michelf\MarkdownExtra;
 
@@ -36,8 +36,8 @@ class MyTextFilter
     public function parse($text, $filters)
     {
         foreach ($filters as $filter) {
-            if (isset($this->filters[$filter]) && is_callable([$this, $filter])) {
-                $text = $this->$filter($text);
+            if (isset($this->filters[$filter])) {
+                $text = $this->{$this->filters[$filter]}($text);
             } else {
                 throw new \InvalidArgumentException("Filter \"" . $filter . "\" does not exist.");
             }
