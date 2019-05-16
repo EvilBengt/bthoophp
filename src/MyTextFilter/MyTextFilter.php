@@ -29,12 +29,20 @@ class MyTextFilter
      * Call each filter on the text and return the processed text.
      *
      * @param string $text   The text to filter.
-     * @param array  $filter Array of filters to use.
+     * @param array  $filters Array of filters to use.
      *
      * @return string with the formatted text.
      */
-    public function parse($text, $filter)
+    public function parse($text, $filters)
     {
+        foreach ($filters as $filter) {
+            if (isset($this->filters[$filter]) && is_callable([$this, $filter])) {
+                $text = $this->$filter($text);
+            } else {
+                throw new \InvalidArgumentException("Filter \"" . $filter . "\" does not exist.");
+            }
+        }
+        return $text;
     }
 
 
