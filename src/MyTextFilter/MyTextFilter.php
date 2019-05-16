@@ -1,6 +1,8 @@
 <?php
 
-namespace Mos\TextFilter;
+namespace EVB\TextFilter;
+
+use Michelf\MarkdownExtra;
 
 /**
  * Filter and format text content.
@@ -8,7 +10,7 @@ namespace Mos\TextFilter;
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  * @SuppressWarnings(PHPMD.UnusedPrivateField)
  */
-class TextFilter
+class MyTextFilter
 {
     /**
      * @var array $filters Supported filters with method names of
@@ -112,5 +114,6 @@ class TextFilter
      */
     public function nl2br($text)
     {
+        return \nl2br($text, false);
     }
 }
