@@ -38,6 +38,8 @@ class MyTextFilter
         foreach ($filters as $filter) {
             if (isset($this->filters[$filter])) {
                 $text = $this->{$this->filters[$filter]}($text);
+            } else if ($filter == "") {
+                continue;
             } else {
                 throw new \InvalidArgumentException("Filter \"" . $filter . "\" does not exist.");
             }
@@ -56,6 +58,7 @@ class MyTextFilter
      */
     public function bbcode2html($text)
     {
+        $text = \htmlspecialchars($text);
         $search = [
             '/\[b\](.*?)\[\/b\]/is',
             '/\[i\](.*?)\[\/i\]/is',
@@ -91,7 +94,7 @@ class MyTextFilter
         return preg_replace_callback(
             '#\b(?<![href|src]=[\'"])https?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#',
             function ($matches) {
-                return "<a href=\'{$matches[0]}\'>{$matches[0]}</a>";
+                return "<a href='{$matches[0]}'>{$matches[0]}</a>";
             },
             $text
         );
@@ -123,5 +126,20 @@ class MyTextFilter
     public function nl2br($text)
     {
         return \nl2br($text, false);
+    }
+
+    /**
+     * Create a slug of a string, to be used as url.
+     *
+     * @param string $str the string to format as slug.
+     *
+     * @return str the formatted slug.
+     */
+    public function slugify($str) {
+        $str = mb_strtolower(trim($str));
+        $str = str_replace(array('å','ä','ö'), array('a','a','o'), $str);
+        $str = preg_replace('/[^a-z0-9-]/', '-', $str);
+        $str = trim(preg_replace('/-+/', '-', $str), '-');
+        return $str;
     }
 }
