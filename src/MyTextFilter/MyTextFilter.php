@@ -9,6 +9,7 @@ use Michelf\MarkdownExtra;
  *
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
  * @SuppressWarnings(PHPMD.UnusedPrivateField)
+ * @SuppressWarnings(PHPMD.StaticAccess)
  */
 class MyTextFilter
 {
@@ -135,7 +136,8 @@ class MyTextFilter
      *
      * @return str the formatted slug.
      */
-    public function slugify($str) {
+    public function slugify($str)
+    {
         $str = mb_strtolower(trim($str));
         $str = str_replace(array('å','ä','ö'), array('a','a','o'), $str);
         $str = preg_replace('/[^a-z0-9-]/', '-', $str);

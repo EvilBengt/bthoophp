@@ -55,7 +55,7 @@ END;
 
         $page->data = $this->filter->parse(
             $page->data,
-            \explode(",",  $page->filter)
+            \explode(",", $page->filter)
         );
 
         return $page;
