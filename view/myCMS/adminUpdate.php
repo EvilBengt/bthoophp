@@ -56,7 +56,7 @@ namespace Anax\View;
     </label>
     <label class="block-label">
         Publicerat:
-        <input type="datetime-local" name="published" value="<?= $row->published ?>">
+        <input type="datetime-local" placeholder="åååå-mm-ddThh:mm" name="published" value="<?= $row->published ?>">
     </label>
     <button type="submit">Spara ändringar</button>
 </form>
